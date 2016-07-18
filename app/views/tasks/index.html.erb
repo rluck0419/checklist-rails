@@ -1,0 +1,9 @@
+<h2 class='text-center'><%= "Task List(s)" %></h2>
+<% lists.each do |list| %>
+  <h4 class='text-center'><%= list.name %></h4>
+  <% list.tasks.each do |task| %>
+    <div class='col-sm-4'><%= task.position %></div>
+    <div class='col-sm-4'><%= task.body %></div>
+    <div class='col-sm-4'><%= task.completed %></div>
+  <% end %>
+<% end %>
