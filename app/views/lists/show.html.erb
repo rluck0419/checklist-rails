@@ -1,0 +1,10 @@
+<h2 class='text-center'><%= list.name %></h2>
+
+<% list.tasks.each do |task| %>
+  <div class='col-sm-4'><%= task.position %></div>
+  <div class='col-sm-4'><%= task.body %></div>
+  <div class='col-sm-4'><%= task.completed %></div>
+<% end %>
+
+<%= link_to("Edit List", edit_list_path(list), class: 'btn btn-warning') %>
+<%= link_to("Delete List", list, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this list? All associated tasks will be deleted!' }) %>

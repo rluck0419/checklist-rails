@@ -1,0 +1,29 @@
+<div><h4><%= form_title %></h4></div>
+
+<div>
+  <% if task.errors.any? %>
+    <% task.errors.full_messages.each do |msg| %>
+      <p> <%= msg %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for(task) do |f| %>
+    <div class="form-group">
+      <label for="body">Body:</label>
+      <%= f.text_field :body, placeholder: task.body, class: 'form-field' %>
+    </div>
+    <div class="form-group">
+      <label for="completed">Completed: </label>
+      <%= f.check_box :completed, placeholder: task.completed, class: 'form-field' %>
+    </div>
+    <div class="form-group">
+      <label for="position">position: </label>
+      <%= f.number_field :position, min: 1, class: 'form-field'%>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

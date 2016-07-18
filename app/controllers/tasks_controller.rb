@@ -30,19 +30,15 @@ class TasksController < ApplicationController
 
   def edit
     render locals: {
-      task: Task.find(params[:id]),
-      list: List.find(params[:list_id])
+      task: Task.find(params[:id])
+      # list: List.find(params[:list_id])
     }
   end
 
   def update
     task = Task.find(params[:id])
-    if task.update
-      task(task_params)
-    end
-    task.list_id = params[:list_id]
-    if task.save
-      redirect_to list_task_path(params[:list_id], task)
+    if task.update(task_params)
+      redirect_to task
     else
       render :edit
     end
@@ -60,8 +56,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:body)
-    params.require(:task).permit(:completed)
-    params.require(:task).permit(:position)
+    params.require(:task).permit(:body, :completed, :position)
   end
 end

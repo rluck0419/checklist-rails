@@ -1,0 +1,10 @@
+<h2><%= task.list.name %></h2>
+
+<h4>Task #<%=task.id%></h4>
+
+<div><%= task.body %></div>
+<div><%= task.completed %></div>
+<div><%= task.position %></div>
+
+<%= link_to("Edit Task", edit_task_path(task), class: 'btn btn-warning') %>
+<%= link_to("Delete Task", task, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this task?' }) %>
