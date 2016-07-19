@@ -1,10 +1,17 @@
-<h2 class='text-center'><%= "Task List(s)" %></h2>
+<h2 class='text-center head-title'><%= "Task List(s)" %></h2>
 
 <% lists.each do |list| %>
   <h4 class='text-center'><%= list.name %></h4>
-  <% list.tasks.each do |task| %>
-    <div class='col-sm-4'><%= task.position %></div>
-    <div class='col-sm-4'><%= task.body %></div>
-    <div class='col-sm-4'><%= task.completed %></div>
-  <% end %>
+    <% list.tasks.each do |task| %>
+      <div class='row'>
+        <div class='pos col-xs-1'><%= task.position %></div>
+        <div class='bod col-xs-5 col-lg-8 col-md-7 col-sm-6'><%= task.body %></div>
+        <% if task.completed %>
+          <div class='com col-xs-1'>Complete</div>
+        <% else%>
+          <div class='incom col-xs-1'>Incomplete</div>
+        <% end %>
+        <div class='view col-xs-2 col-sm-1'><%= link_to("Show Task", task, class: 'btn btn-primary') %></div>
+      </div>
+    <% end %>
 <% end %>
