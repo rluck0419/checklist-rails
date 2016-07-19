@@ -1,7 +1,7 @@
-<h2 class='text-center head-title'><%= "Task List(s)" %></h2>
+<h2 class='text-center head-title'><%= link_to("Places To Go", "/") %></h2>
 
 <% lists.each do |list| %>
-  <h4 class='text-center'><%= list.name %></h4>
+  <h4 class='text-center'><%= link_to(list.name, "/lists/#{list.id}") %></h4>
     <% list.tasks.each do |task| %>
       <div class='row'>
         <div class='pos col-xs-1'><%= task.position %></div>
