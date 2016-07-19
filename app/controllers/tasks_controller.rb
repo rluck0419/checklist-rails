@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     task = Task.new(task_params)
     task.list_id = params[:list_id]
     if task.save
-      redirect_to list_task_path(params[:list_id], task)
+      redirect_to list_task_path(task)
     else
       render :new
     end
@@ -30,15 +30,15 @@ class TasksController < ApplicationController
 
   def edit
     render locals: {
-      task: Task.find(params[:id])
-      # list: List.find(params[:list_id])
+      task: Task.find(params[:id]),
+      list: List.find(params[:list_id])
     }
   end
 
   def update
     task = Task.find(params[:id])
     if task.update(task_params)
-      redirect_to task
+      redirect_to list_task_path(task)
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
     if Task.exists?(params[:id])
       Task.destroy(params[:id])
       flash[:notice] = "Task deleted"
-      redirect_to "/tasks"
+      redirect_to list_task_path(task)
     else
       flash[:alert] = "There was an error - please try again"
     end

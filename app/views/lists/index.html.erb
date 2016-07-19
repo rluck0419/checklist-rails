@@ -11,7 +11,7 @@
         <% else%>
           <div class='incom col-xs-1'>Incomplete</div>
         <% end %>
-        <div class='view col-xs-2 col-sm-1'><%= link_to("Show Task", task, class: 'btn btn-primary') %></div>
+        <div class='view col-xs-2 col-sm-1'><%= link_to("Show Task", list_task_path(list, task), class: 'btn btn-primary') %></div>
       </div>
     <% end %>
 <% end %>

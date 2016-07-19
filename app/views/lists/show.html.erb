@@ -9,10 +9,11 @@
     <% else%>
       <div class='incom col-md-1 col-sm-2 col-xs-3'>Incomplete</div>
     <% end %>
-    <div class='view col-xs-2 col-sm-1'><%= link_to("Show Task", task, class: 'btn btn-primary') %></div>
+    <div class='view col-xs-2 col-sm-1'><%= link_to("Show Task", list_task_path(list, task), class: 'btn btn-primary') %></div>
   </div>
 <% end %>
 
-<%= link_to("All Lists", "/lists", class: 'btn btn-primary') %>
+<%= link_to("Create Task", "/tasks/new", class: 'btn btn-success') %>
+<%= link_to("All Lists", lists_path, class: 'btn btn-primary') %>
 <%= link_to("Edit List", edit_list_path(list), class: 'btn btn-warning') %>
 <%= link_to("Delete List", list, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this list? All associated tasks will be deleted!' }) %>
